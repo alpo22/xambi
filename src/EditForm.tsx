@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useLoadingSpinner } from "./components/LoadingSpinner";
 import { FileUpload } from "./components/FileUpload";
+import PillList from "./components/PillList";
 import { uploadFile } from "./services/firebase";
 import { StoredFileState } from "./data/common";
 
@@ -22,6 +23,7 @@ export const EditEntryType = {
   Date: "Date",
   Select: "Select",
   Showcase: "Showcase",
+  PillList: "PillList",
 };
 
 export const ValidationType = {
@@ -232,7 +234,7 @@ export function EditForm(props: EditFormProps) {
   const [checkboxFieldValue, setCheckboxFieldValue] = useState(false);
 
   return (
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative lg:pt-5 text-left">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative lg:pt-5 text-left">
       <form
         className="space-y-8 divide-y divide-gray-200"
         onSubmit={event => {
@@ -410,7 +412,7 @@ export function EditForm(props: EditFormProps) {
               <h3 className="text-3xl font-medium leading-6 text-gray-900">{props.title}</h3>
               <p className="my-2 text-sm text-gray-500">{props.description}</p>
             </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               {props.editEntries.map((editEntry: EditEntry, index) => {
                 const requiredMark = editEntry.isRequired ? "*" : "";
                 if (editEntry.condition != null) {
@@ -1294,6 +1296,20 @@ export function EditForm(props: EditFormProps) {
                         isMultiple={true}
                       />
                     </div>
+                  );
+                } else if (editEntry.type == EditEntryType.PillList) {
+                  return (
+                    <PillList
+                      title={editEntry.attributeName}
+                      description={editEntry.subName}
+                      id={editEntry.attribute}
+                      isRequired={editEntry.isRequired}
+                      items={entity[editEntry.attribute] || []}
+                      onItemsChange={newItems => {
+                        const updatedEntity = { ...entity, [editEntry.attribute]: newItems };
+                        setEntity(updatedEntity);
+                      }}
+                    />
                   );
                 }
               })}
