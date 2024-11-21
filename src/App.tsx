@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { EditForm, EditEntryType, ValidationType } from "./EditForm";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <EditForm
