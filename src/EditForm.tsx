@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useLoadingSpinner } from "./components/LoadingSpinner";
 import { FileUpload } from "./components/FileUpload";
@@ -235,10 +235,12 @@ export function EditForm(props: EditFormProps) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative lg:pt-5 text-left">
+      <Toaster />
       <form
         className="space-y-8 divide-y divide-gray-200"
         onSubmit={event => {
           event.preventDefault();
+
           // if (!entity || !entity["id"]) {
           //   toast.error("Unknown error.");
           //   return;
@@ -299,6 +301,8 @@ export function EditForm(props: EditFormProps) {
               entity[entity_field][entity_sub_field] = target_value;
             }
           }
+
+          console.log(303);
 
           for (const editEntry of props.editEntries) {
             if (editEntry.isRequired) {
@@ -394,6 +398,7 @@ export function EditForm(props: EditFormProps) {
               }
             }
           }
+          console.log(400);
 
           if (props.onSubmitSuccess) {
             try {
