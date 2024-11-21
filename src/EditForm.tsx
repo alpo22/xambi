@@ -302,8 +302,6 @@ export function EditForm(props: EditFormProps) {
             }
           }
 
-          console.log(303);
-
           for (const editEntry of props.editEntries) {
             if (editEntry.isRequired) {
               if (!entity[editEntry.attribute]) {
@@ -398,7 +396,6 @@ export function EditForm(props: EditFormProps) {
               }
             }
           }
-          console.log(400);
 
           if (props.onSubmitSuccess) {
             try {

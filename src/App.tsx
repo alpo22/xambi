@@ -22,7 +22,7 @@ export default function App() {
             attributeName: "Text list",
             type: EditEntryType.TextList,
             isRequired: true,
-            validations: [ValidationType.TextLengthBelow200],
+            validations: [],
             extraParam: null,
           },
           {
@@ -42,7 +42,7 @@ export default function App() {
         }}
         onSubmitSuccess={data => {
           console.log(data);
-          alert("Done");
+          alert("Look at console for data");
         }}
       />
     </Router>
