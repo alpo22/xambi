@@ -2,6 +2,8 @@
 
 Pill component for Xambi.
 
+View the app running here: [https://xambi-alpo22s-projects.vercel.app/](https://xambi-alpo22s-projects.vercel.app/)
+
 ### What does the component do?
 
 `<EditForm>` is a form building component; you can generate a form with a number of different field types (text, radio, file, address, etc). You define the form fields via the `editEntries` prop, and the initial values via the `entityObj` prop. While modifying the form, state is saved inside EditForm component. When you press "Save", it passes the data back via `onSubmitSuccess` if it is valid (there are a number of validation functions built-in).
