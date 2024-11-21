@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 interface PillListProps {
   title: string;
@@ -35,7 +36,7 @@ const PillList: React.FC<PillListProps> = ({ title, description, id, isRequired,
       <div className="border rounded flex flex-wrap gap-0.5 mb-2 p-0.5 border-solid border-[#e3e6ec]">
         {items.map((item, index) => (
           <div
-            key={`pill-list-item-${item}`}
+            key={`pill-list-item-${uuidv4()}`}
             className="border rounded bg-[white] text-sm flex items-center gap-2 px-1 py-0.5 border-solid border-[#e3e6ec]"
           >
             <span className="text-[rgb(71,147,220)]">{item}</span>
