@@ -33,22 +33,24 @@ const PillList: React.FC<PillListProps> = ({ title, description, id, isRequired,
       </h3>
       {description && <span className="block text-xs text-gray-500">{description}</span>}
 
-      <div className="border rounded flex flex-wrap gap-0.5 mb-2 p-0.5 border-solid border-[#e3e6ec]">
-        {items.map((item, index) => (
-          <div
-            key={`pill-list-item-${uuidv4()}`}
-            className="border rounded bg-[white] text-sm flex items-center gap-2 px-1 py-0.5 border-solid border-[#e3e6ec]"
-          >
-            <span className="text-[rgb(71,147,220)]">{item}</span>
-            <button
-              onClick={() => handleRemoveItem(index)}
-              className="text-[rgb(96,115,149)] text-[22px] h-3.5 relative -top-1"
+      {items.length > 0 && (
+        <div className="border rounded flex flex-wrap gap-0.5 mb-2 p-0.5 border-solid border-[#e3e6ec]">
+          {items.map((item, index) => (
+            <div
+              key={`pill-list-item-${uuidv4()}`}
+              className="border rounded bg-[white] text-sm flex items-center gap-2 px-1 py-0.5 border-solid border-[#e3e6ec]"
             >
-              &times;
-            </button>
-          </div>
-        ))}
-      </div>
+              <span className="text-[rgb(71,147,220)]">{item}</span>
+              <button
+                onClick={() => handleRemoveItem(index)}
+                className="text-[rgb(96,115,149)] text-[22px] h-3.5 relative -top-1"
+              >
+                &times;
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="flex items-center">
         <input
