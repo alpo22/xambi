@@ -75,9 +75,6 @@ Here is a sample usage:
    ]} />
 ```
 
-3. send github link
-4. send a Loom screen recording of it working on a webpage and explaining (by voice) how i decided to implement it
-
 ### Installing and running app locally
 
 ```
