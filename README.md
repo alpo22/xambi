@@ -71,8 +71,7 @@ Here is a sample usage:
          patientBio: '...',
          patientPhoto: File,
          patientAge: 55,
-         },
-      {}
+      }
    ]} />
 ```
 
